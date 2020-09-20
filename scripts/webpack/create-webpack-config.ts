@@ -4,13 +4,15 @@ import HtmlPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 
+import { CommandContext } from '@script-types'
+
 const getFilenameForEnvironment = (baseFileName: string, isProduction: boolean) => {
     return baseFileName
         .split(path.extname(baseFileName) || '.[ext]')
         .join(isProduction ? '-[contenthash:8]' : '')
 }
 
-export function createWebpackConfig(currentContext): webpack.Configuration {
+export function createWebpackConfig(currentContext: CommandContext): webpack.Configuration {
     const { buildTarget, env, mode, name, projectPaths } = currentContext
     const isHMREnabled = mode === 'watch'
     const isServer = buildTarget === 'server'
@@ -19,8 +21,8 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
         context: process.cwd(),
         devtool: env.production ? 'source-map' : 'cheap-module-source-map',
         entry: [
-            ...(env.dev && isHMREnabled ? projectPaths.get('hot-entries') : []),
-            projectPaths.get(`${buildTarget}-entry`)
+            ...(env.dev && isHMREnabled ? (projectPaths.get('hot-entries') as string[]) : []),
+            (projectPaths.get(`${buildTarget}-entry`) as string)
         ],
         mode: env.production ? 'production' : 'development',
         module: {
@@ -133,7 +135,7 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
             futureEmitAssets: true,
             libraryTarget: isServer ? 'commonjs2' : 'var',
             path: projectPaths.get('build'),
-            publicPath: projectPaths.get('publicPath')
+            publicPath: projectPaths.get('public-path')
         },
         plugins: [
             new ForkTSCheckerPlugin({ async: env.dev }),

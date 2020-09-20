@@ -1,10 +1,10 @@
 import env from 'std-env'
 import path from 'path'
 
-import { CommandNames, ProjectConfig, ProjectPaths } from '@script-types'
+import { ConfigFromCli, ProjectConfig, ProjectPaths } from '@script-types'
 
 const createProjectPaths = (rootDir: string): ProjectPaths => {
-    const pathMap = new Map([
+    return new Map([
         ['client', path.join(rootDir, 'src/client')],
         ['client-entry', path.join(rootDir, 'src/client/index.ts')],
         ['html-template', path.join(rootDir, 'src/client/index.html')],
@@ -13,10 +13,9 @@ const createProjectPaths = (rootDir: string): ProjectPaths => {
         ['server-entry', path.join(rootDir, 'src/server/index.ts')],
         ['src', path.join(rootDir, 'src')]
     ])
-    return (pathMap as ProjectPaths)
 }
 
-export function getProjectConfig(cliArgs: Record<string, any>, commandName: CommandNames): ProjectConfig {
+export function getProjectConfig(cliArgs: ConfigFromCli, commandName: string): ProjectConfig {
     const projectPaths = createProjectPaths(process.cwd())
     
     const baseConfig = {

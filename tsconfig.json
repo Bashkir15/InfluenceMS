@@ -9,7 +9,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "paths": {
-            "@script-types": ["types/scripts.ts"]
+            "@script-types": ["types/scripts.ts", "types/shared.ts"]
         },
         "noUnusedLocals": true,
         "target": "esnext"
