@@ -1,8 +1,10 @@
 import env from 'std-env'
 import path from 'path'
 
-const createProjectPaths = (rootDir: string) => {
-    const pathMap: Map<string, string | string[]> = new Map([
+import { CommandNames, ProjectConfig, ProjectPaths } from '@script-types'
+
+const createProjectPaths = (rootDir: string): ProjectPaths => {
+    const pathMap = new Map([
         ['client', path.join(rootDir, 'src/client')],
         ['client-entry', path.join(rootDir, 'src/client/index.ts')],
         ['html-template', path.join(rootDir, 'src/client/index.html')],
@@ -11,10 +13,10 @@ const createProjectPaths = (rootDir: string) => {
         ['server-entry', path.join(rootDir, 'src/server/index.ts')],
         ['src', path.join(rootDir, 'src')]
     ])
-    return pathMap
+    return (pathMap as ProjectPaths)
 }
 
-export function getProjectConfig(cliArgs: Record<string, any>, commandName: string) {
+export function getProjectConfig(cliArgs: Record<string, any>, commandName: CommandNames): ProjectConfig {
     const projectPaths = createProjectPaths(process.cwd())
     
     const baseConfig = {
@@ -37,5 +39,5 @@ export function getProjectConfig(cliArgs: Record<string, any>, commandName: stri
         projectConfig.mode = 'watch'
     }
 
-    return projectConfig
+    return projectConfig as ProjectConfig
 }

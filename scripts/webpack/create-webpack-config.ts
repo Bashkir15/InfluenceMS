@@ -9,6 +9,7 @@ const getFilenameForEnvironment = (baseFileName: string, isProduction: boolean) 
         .split(path.extname(baseFileName) || '.[ext]')
         .join(isProduction ? '-[contenthash:8]' : '')
 }
+
 export function createWebpackConfig(currentContext): webpack.Configuration {
     const { buildTarget, env, mode, name, projectPaths } = currentContext
     const isHMREnabled = mode === 'watch'

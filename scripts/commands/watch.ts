@@ -1,9 +1,11 @@
 import chalk from 'chalk'
 import WebpackDevServer from 'webpack-dev-server'
 
+import { ProjectConfig } from '@script-types'
+
 import { createWebpackCompiler } from '../webpack'
 
-export async function watch(projectConfig) {
+export async function watch(projectConfig: ProjectConfig) {
     let isFirstRun = true
 
     console.log(chalk.cyan(`Preparing to watch files...`))
