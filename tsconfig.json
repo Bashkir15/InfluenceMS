@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+        "lib": ["dom"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "target": "esnext"
+    },
+    "include": ["scripts/**/*.ts", "src/server/**/*.ts"]
+}
