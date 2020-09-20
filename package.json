@@ -10,7 +10,8 @@
     "lint": "tsc --noEmit && npm run lint:ts && npm run lint:sass",
     "lint:ts": "eslint --cache \"{scripts, src}/**/*.{ts|tsx}\" -- max-warnings 0",
     "lint:ts:fix": "npm run lint:ts -- --fix",
-    "lint:sass": "sass-lint -v --max-warnings 0"
+    "lint:sass": "sass-lint -v --max-warnings 0",
+    "watch:client": "node scripts/cli.js watch --buildTarget=client "
   },
   "sideEffects": [
     "*.css",
