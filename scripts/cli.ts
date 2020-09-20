@@ -2,13 +2,13 @@ import commandLineArgs from 'command-line-args'
 import commandLineCommands from 'command-line-commands'
 
 import { CommandMap } from './commands'
+import { getProjectConfig } from './get-project-config'
+
+const commandNames = Array.from(CommandMap.keys())
 
 async function cli() {
-    const { argv, command: commandName } = commandLineCommands(Array.from(CommandMap.keys()), process.argv.slice(2))
-    const cliArgs = commandLineArgs([], { argv })
-
-    // Get config from cli args
-    const projectConfig = { ...cliArgs }
+    const { argv, command: commandName } = commandLineCommands(commandNames, process.argv.slice(2))
+    const projectConfig = getProjectConfig(commandLineArgs([], { argv }), commandName)
     const command = CommandMap.get(commandName)
 
     try {
