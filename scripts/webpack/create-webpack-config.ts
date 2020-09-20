@@ -1,4 +1,6 @@
 import ExtractStylesPlugin from 'mini-css-extract-plugin'
+import ForkTSCheckerPlugin from 'fork-ts-checker-webpack-plugin'
+import HtmlPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 
@@ -47,6 +49,7 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
                     }
                 }]
             }, {
+                sideEffects: true,
                 test: /\.(scss|css)$/,
                 use: [
                     env.production ? ExtractStylesPlugin.loader : 'style-loader',
@@ -69,12 +72,23 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
                                             stage: 3 
                                         }
                                     }]
-                                ]
+                                ],
+                                sourceMap: env.production
                             }
                         }
                     },
-                    'resolve-url-loader',
-                    'sass-loader'
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {
+                            sourceMap: env.production
+                        }
+                    }
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: env.production
+                        }
+                    }
                 ]
             }, {
                 test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
@@ -117,7 +131,16 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
             publicPath: projectPaths.get('publicPath')
         },
         plugins: [
-            env.dev && mode === 'watch' && new webpack.HotModuleReplacementPlugin()
+            new ForkTSCheckerPlugin({ async: env.dev }),
+            new HtmlPlugin({
+                filename: getFilenameForEnvironment('index.html', env.production),
+                template: projectPaths.get('html-template')
+            }),
+            env.dev && mode === 'watch' && new webpack.HotModuleReplacementPlugin(),
+            env.production && new ExtractStylesPlugin({
+                chunkFilename: 'styles/[name]-[chunk]-[contenthash:8].css',
+                filename: 'styles/[name]-[contenthash:8].css'
+            })
         ].filter(Boolean),
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.json']
