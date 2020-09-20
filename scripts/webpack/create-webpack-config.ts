@@ -11,12 +11,16 @@ const getFilenameForEnvironment = (baseFileName: string, isProduction: boolean) 
 }
 export function createWebpackConfig(currentContext): webpack.Configuration {
     const { buildTarget, env, mode, name, projectPaths } = currentContext
+    const isHMREnabled = mode === 'watch'
     const isServer = buildTarget === 'server'
 
     return {
         context: process.cwd(),
         devtool: env.production ? 'source-map' : 'cheap-module-source-map',
-        entry: [projectPaths.get(`${buildTarget}-entry`)],
+        entry: [
+            ...(env.dev && isHMREnabled ? projectPaths.get('hot-entries') : []),
+            projectPaths.get(`${buildTarget}-entry`)
+        ],
         mode: env.production ? 'production' : 'development',
         module: {
             rules: [{
@@ -82,7 +86,7 @@ export function createWebpackConfig(currentContext): webpack.Configuration {
                         options: {
                             sourceMap: env.production
                         }
-                    }
+                    },
                     {
                         loader: 'sass-loader',
                         options: {
