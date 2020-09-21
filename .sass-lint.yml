@@ -1,8 +1,0 @@
-files:
-  include:
-    - 'src/**/*.s+(a|c)ss'
-rules:
-  quotes:
-    - 2
-    - 
-      style: 'single'

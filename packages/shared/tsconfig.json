@@ -3,7 +3,7 @@
         // Transpile this with Typescript for convenience. In reality most of these files
         // will be handled by webpack (only the api-server files won't be).
         "module": "commonjs",
-        "outDir": "shared/build"
+        "outDir": "./build"
     },
     "extends": "../../tsconfig.json"
 }

@@ -2,7 +2,7 @@
     "compilerOptions": {
         // Client files are handled by webpack completely
         "noEmit": true,
-        "outDir": "client-app/build"
+        "outDir": "./build"
     },
     "extends": "../../tsconfig.json"
 }

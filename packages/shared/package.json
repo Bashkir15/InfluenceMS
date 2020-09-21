@@ -2,9 +2,12 @@
   "name": "@influence-ms/shared",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "build/index",
+  "types": "build/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "run run clean && npm run compiler",
+    "clean": "rimraf -rf ./build",
+    "compile": "tsc -p tconfig.json"
   },
   "author": "Forrest Collins",
   "license": "MIT"

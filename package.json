@@ -1,18 +1,12 @@
 {
-  "name": "influencems",
+  "name": "influence-ms",
+  "private": true,
   "version": "0.0.1",
   "author": "Forrest Collins",
   "license": "MIT",
   "description": "A CMS for content-creators",
   "docker_image": "node:10",
   "main": "dist/index.js",
-  "scripts": {
-    "lint": "tsc --noEmit && npm run lint:ts && npm run lint:sass",
-    "lint:ts": "eslint --cache \"{scripts, src}/**/*.{ts|tsx}\" -- max-warnings 0",
-    "lint:ts:fix": "npm run lint:ts -- --fix",
-    "lint:sass": "sass-lint -v --max-warnings 0",
-    "watch:client": "node scripts/cli.js watch --buildTarget=client "
-  },
   "sideEffects": [
     "*.css",
     "*.scss"
