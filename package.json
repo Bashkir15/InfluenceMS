@@ -1,5 +1,6 @@
 {
-  "name": "influencems",
+  "name": "influence-ms",
+  "private": true,
   "version": "0.0.1",
   "author": "Forrest Collins",
   "license": "MIT",
@@ -7,11 +8,7 @@
   "docker_image": "node:10",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "tsc --noEmit && npm run lint:ts && npm run lint:sass",
-    "lint:ts": "eslint --cache \"{scripts, src}/**/*.{ts|tsx}\" -- max-warnings 0",
-    "lint:ts:fix": "npm run lint:ts -- --fix",
-    "lint:sass": "sass-lint -v --max-warnings 0",
-    "watch:client": "node scripts/cli.js watch --buildTarget=client "
+    "build": "lerna run build"
   },
   "sideEffects": [
     "*.css",
@@ -64,6 +61,7 @@
     "html-webpack-plugin": "^4.4.1",
     "jest": "^26.4.2",
     "jest-cli": "^26.4.2",
+    "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^0.11.2",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-flexbugs-fixes": "^4.2.1",
@@ -72,6 +70,7 @@
     "prettier": "^2.1.2",
     "prettier-stylelint": "^0.4.2",
     "resolve-url-loader": "^3.1.1",
+    "rimraf": "^3.0.2",
     "sass-lint": "^1.13.1",
     "sass-loader": "^10.0.2",
     "std-env": "^2.2.1",

@@ -1,0 +1,14 @@
+{
+  "name": "@influence-ms/api-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/index",
+  "types": "build/index",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf -rf ./build",
+    "compile": "tsc -p tconfig.json"
+  },
+  "author": "Forrest Collins",
+  "license": "MIT"
+}

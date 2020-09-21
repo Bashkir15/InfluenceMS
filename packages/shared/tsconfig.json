@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        // Transpile this with Typescript for convenience. In reality most of these files
+        // will be handled by webpack (only the api-server files won't be).
+        "module": "es2020",
+        "outDir": "./build/esm"
+    },
+    "extends": "../../tsconfig.json"
+}

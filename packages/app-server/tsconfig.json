@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        // Don't emit files because the app-server get's transpiled by webpack
+        "noEmit": true,
+        "outDir": "./build",
+    },
+    "extends": "../../tsconfig.json"
+}

@@ -1,0 +1,8 @@
+// This is only ever touched by node so we can resolve to commonjs. 
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "outDir": "./build"
+    },
+    "extends": "../../tsconfig.json"
+}
