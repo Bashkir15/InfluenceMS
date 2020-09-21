@@ -3,7 +3,6 @@
         "baseUrl": "./packages",
         "declaration": true,
         "incremental": true,
-        "moduleResolution": "node",
         "noUnusedLocals": true,
         "paths": {
             "@influence-ms/app-server": ["app-server/src"],
@@ -12,7 +11,6 @@
             "@influence-ms/shared": ["shared/src"],
             "@incluence-ms/types": ["types/src"],
         },
-        "target": "esnext"
     },
     "extends": "./tsconfig.build.json",
 }

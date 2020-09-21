@@ -5,9 +5,9 @@
   "main": "build/index",
   "types": "build/index",
   "scripts": {
-    "build": "run run clean && npm run compiler",
+    "build": "run run clean && npm run compile",
     "clean": "rimraf -rf ./build",
-    "compile": "tsc -p tconfig.json"
+    "compile": "tsc -p tconfig.json && tsc -p tsconfig-cjs.json"
   },
   "author": "Forrest Collins",
   "license": "MIT"
