@@ -2,7 +2,7 @@ import env from 'std-env'
 import path from 'path'
 
 import { ConfigFromCli, ProjectConfig, ProjectPaths } from '@script-types'
-
+import { createMap } from './utils'
 const createProjectPaths = (rootDir: string): ProjectPaths => {
     return new Map([
         ['client', path.join(rootDir, 'src/client')],

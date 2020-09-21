@@ -21,7 +21,7 @@ export function createWebpackConfig(currentContext: CommandContext): webpack.Con
         context: process.cwd(),
         devtool: env.production ? 'source-map' : 'cheap-module-source-map',
         entry: [
-            ...(env.dev && isHMREnabled ? (projectPaths.get('hot-entries') as string[]) : []),
+            ...(env.dev && isHMREnabled ? (projectPaths.get('hot-entries')) : []),
             (projectPaths.get(`${buildTarget}-entry`) as string)
         ],
         mode: env.production ? 'production' : 'development',

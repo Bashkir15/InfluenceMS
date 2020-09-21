@@ -1,18 +1,18 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": ".",
+        "baseUrl": "./packages",
         "declaration": true,
-        "esModuleInterop": true,
-        "jsx": "react",
-        "lib": ["dom"],
-        "module": "esnext",
+        "incremental": true,
         "moduleResolution": "node",
-        "paths": {
-            "@script-types": ["types/scripts.ts", "types/shared.ts"]
-        },
         "noUnusedLocals": true,
+        "paths": {
+            "@influence-ms/app-server": ["app-server/src"],
+            "@influence-ms/api-server": ["api-server/src"],
+            "@influence-ms/client-app": ["client-app/src"],
+            "@influence-ms/shared": ["shared/src"],
+            "@incluence-ms/types": ["types/src"],
+        },
         "target": "esnext"
     },
-    "include": ["scripts/**/*.ts", "src/server/**/*.ts"]
+    "extends": "./tsconfig.build.json",
 }
