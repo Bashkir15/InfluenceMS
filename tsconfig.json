@@ -3,6 +3,7 @@
         "baseUrl": "./packages",
         "declaration": true,
         "incremental": true,
+        "module": "es2020",
         "noUnusedLocals": true,
         "paths": {
             "@influence-ms/app-server": ["app-server/src"],

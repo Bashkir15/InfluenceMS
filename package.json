@@ -7,6 +7,9 @@
   "description": "A CMS for content-creators",
   "docker_image": "node:10",
   "main": "dist/index.js",
+  "scripts": {
+    "build": "lerna run build"
+  },
   "sideEffects": [
     "*.css",
     "*.scss"
