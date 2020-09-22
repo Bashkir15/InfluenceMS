@@ -5,10 +5,14 @@
   "main": "build/index",
   "types": "build/index",
   "scripts": {
-    "build": "run run clean && npm run compile",
+    "build": "npm run clean && npm run compile",
     "clean": "rimraf -rf ./build",
-    "compile": "tsc -p tconfig.json && tsc -p tsconfig-cjs.json"
+    "compile": "tsc -p tsconfig.build.esm.json && tsc -p tsconfig.build.cjs.json"
   },
   "author": "Forrest Collins",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "fastify-helmet": "^5.0.3",
+    "ioredis": "^4.17.3"
+  }
 }

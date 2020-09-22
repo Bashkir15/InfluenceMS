@@ -7,8 +7,15 @@
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rimraf -rf ./build",
-    "compile": "tsc -p tconfig.json"
+    "compile": "tsc -p tsconfig.build.json"
   },
   "author": "Forrest Collins",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^3.4.1",
+    "fastify-cookie": "^4.1.0",
+    "fastify-cors": "^4.1.0",
+    "fastify-secure-session": "^2.2.1"
+  }
 }

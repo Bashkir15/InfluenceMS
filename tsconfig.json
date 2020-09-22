@@ -12,6 +12,8 @@
             "@influence-ms/shared": ["shared/src"],
             "@incluence-ms/types": ["types/src"],
         },
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
     },
     "extends": "./tsconfig.build.json",
 }
