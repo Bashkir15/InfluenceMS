@@ -1,9 +1,10 @@
+import { FastifyInstance } from 'fastify'
 import cookiePlugin from 'fastify-cookie'
 import corsPlugin from 'fastify-cors'
 
 import { securityMiddleware } from '@influence-ms/shared'
 
-export async function upgradeServerInstance(instance) {
+export async function upgradeServerInstance(instance: FastifyInstance): Promise<FastifyInstance> {
     instance.register(cookiePlugin, {
         secret: process.env.COOKIE_SECRET
     })
