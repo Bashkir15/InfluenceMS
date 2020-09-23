@@ -3,6 +3,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
         "sourceMap": true,
         "target": "esnext"
     },

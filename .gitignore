@@ -5,3 +5,10 @@ mocks
 *.env
 *.log
 *.js
+
+packages/**/build
+packages/**/coverage
+packages/**/tests/mocks
+packages/**/*.env
+packages/**/*.log
+packages/**/*.js
