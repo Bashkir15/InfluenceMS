@@ -1,7 +1,8 @@
 import fastify from 'fastify'
+import serveStatics from 'fastify-static'
+import path from 'path'
 import proxy from 'fastify-reply-from'
 import dotenv from 'dotenv'
-import { env } from 'process'
 
 dotenv.config()
 
@@ -16,6 +17,11 @@ function startServer() {
     // Forward all API requests to the API server
     instance.get('/api', {}, (request, reply) => {
         reply.from('/')
+    })
+
+    // Serve static assets from the webpack output directory
+    instance.register(serveStatics, {
+        root: path.resolve(__dirname, '../build')
     })
 
     instance

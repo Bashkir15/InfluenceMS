@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "fastify": "^3.4.1",
     "fastify-reply-from": "^3.3.0",
+    "fastify-static": "^3.2.0",
     "path": "^0.12.7"
   }
 }
