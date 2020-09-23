@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "jsx": "react",
         // Client files are handled by webpack completely
         "noEmit": true,
         "outDir": "./build"
