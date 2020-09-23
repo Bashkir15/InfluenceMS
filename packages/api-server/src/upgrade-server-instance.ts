@@ -3,6 +3,7 @@ import cookiePlugin from 'fastify-cookie'
 import corsPlugin from 'fastify-cors'
 
 import { securityMiddleware } from '@influence-ms/shared'
+import { authService } from './services'
 
 export async function upgradeServerInstance(instance: FastifyInstance): Promise<FastifyInstance> {
     instance.register(cookiePlugin, {
@@ -13,6 +14,7 @@ export async function upgradeServerInstance(instance: FastifyInstance): Promise<
         origin: process.env.IS_DEPLOY ? 'https://infuence-ms.com' : '*'
     })
     instance.register(securityMiddleware)
-
+    instance.register(authService)
+    
     return instance
 }
