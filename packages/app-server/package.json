@@ -13,6 +13,7 @@
     "fastify": "^3.4.1",
     "fastify-reply-from": "^3.3.0",
     "fastify-static": "^3.2.0",
+    "fs-extra": "^9.0.1",
     "path": "^0.12.7"
   }
 }

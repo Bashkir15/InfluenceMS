@@ -3,6 +3,7 @@ import serveStatics from 'fastify-static'
 import path from 'path'
 import proxy from 'fastify-reply-from'
 import dotenv from 'dotenv'
+import { createReadStream } from 'fs-extra'
 
 dotenv.config()
 
@@ -21,8 +22,16 @@ function startServer() {
 
     // Serve static assets from the webpack output directory
     instance.register(serveStatics, {
-        root: path.resolve(__dirname, '../build')
+        root: path.resolve(__dirname, '../../client-app/build')
     })
+
+    if (process.env.IS_SSR === 'true') {
+        // Handle SSR
+    } else {
+        instance.get('*', {}, (request, reply) => {
+            reply.send(createReadStream(path.resolve(__dirname, '../../client-app/build/index.html')))
+        })
+    }
 
     instance
         .listen(process.env.SERVER_PORT as unknown as number)
